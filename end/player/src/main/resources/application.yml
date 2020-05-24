@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: player
+server:
+  port: 8090
+
+eureka:
+  client:
+    registry-fetch-interval-seconds: 20
+    service-url:
+      defaultZone: http://localhost:7777/eureka
+
+music:
+  file: dfgdfgdfg

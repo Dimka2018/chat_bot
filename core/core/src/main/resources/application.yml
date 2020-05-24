@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: core
+server:
+  port: 8081
+
+eureka:
+  client:
+    registry-fetch-interval-seconds: 20
+    service-url:
+      defaultZone: http://localhost:7777/eureka
