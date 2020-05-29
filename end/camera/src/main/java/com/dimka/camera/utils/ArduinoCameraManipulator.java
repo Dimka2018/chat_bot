@@ -1,33 +1,75 @@
 package com.dimka.camera.utils;
 
+import arduino.Arduino;
+import com.dimka.camera.entity.Camera;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
+
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
+
+@Component
 public class ArduinoCameraManipulator implements CameraManipulator {
-    @Override
-    public void setYAngle(Integer angle) {
 
+    @Value("${camera.arduino.com}")
+    private String com;
+
+    @Value("${camera.arduino.rate}")
+    private Integer rate;
+
+    private final Camera camera;
+    private Arduino arduino;
+
+    public ArduinoCameraManipulator(Camera camera) {
+        this.arduino = new Arduino(com, rate);
+        this.camera = camera;
+    }
+
+    @PostConstruct
+    public void connect() {
+        arduino.openConnection();
+    }
+
+    @PreDestroy
+    public void disconnect() {
+        arduino.closeConnection();
     }
 
     @Override
-    public void setZAngle(Integer angle) {
-
+    public Camera setYAngle(Integer angle) {
+        return camera;
     }
 
     @Override
-    public void increaseYAngle(Integer angle) {
-
+    public Camera setZAngle(Integer angle) {
+        return camera;
     }
 
     @Override
-    public void decreaseYAngle(Integer angle) {
-
+    public Camera increaseYAngle(Integer angle) {
+        return camera;
     }
 
     @Override
-    public void increaseZAngle(Integer angle) {
-
+    public Camera decreaseYAngle(Integer angle) {
+        return camera;
     }
 
     @Override
-    public void decreaseZAngle(Integer angle) {
+    public Camera increaseZAngle(Integer angle) {
+        return camera;
+    }
 
+    @Override
+    public Camera decreaseZAngle(Integer angle) {
+        return camera;
+    }
+
+    private void sendMessage(String message) {
+        arduino.serialWrite(message);
+    }
+
+    private String readMessage() {
+        return arduino.serialRead();
     }
 }

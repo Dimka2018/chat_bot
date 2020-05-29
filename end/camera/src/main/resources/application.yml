@@ -12,3 +12,6 @@ eureka:
 
 camera:
   step: 45
+  arduino:
+    com: COM3
+    rete: 115200

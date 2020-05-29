@@ -1,16 +1,18 @@
 package com.dimka.camera.utils;
 
+import com.dimka.camera.entity.Camera;
+
 public interface CameraManipulator {
 
-    void setYAngle(Integer angle);
+    Camera setYAngle(Integer angle);
 
-    void setZAngle(Integer angle);
+    Camera setZAngle(Integer angle);
 
-    void increaseYAngle(Integer angle);
+    Camera increaseYAngle(Integer angle);
 
-    void decreaseYAngle(Integer angle);
+    Camera decreaseYAngle(Integer angle);
 
-    void increaseZAngle(Integer angle);
+    Camera increaseZAngle(Integer angle);
 
-    void decreaseZAngle(Integer angle);
+    Camera decreaseZAngle(Integer angle);
 }
