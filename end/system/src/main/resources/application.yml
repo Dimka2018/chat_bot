@@ -1,14 +1,11 @@
 spring:
   application:
-    name: player
+    name: system
 server:
-  port: 8090
+  port: 8091
 
 eureka:
   client:
     registry-fetch-interval-seconds: 20
     service-url:
       defaultZone: http://localhost:7777/eureka
-
-music:
-  folder: music/

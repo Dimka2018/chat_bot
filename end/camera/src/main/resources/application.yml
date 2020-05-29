@@ -1,8 +1,8 @@
 spring:
   application:
-    name: player
+    name: camera
 server:
-  port: 8090
+  port: 8092
 
 eureka:
   client:
@@ -10,5 +10,5 @@ eureka:
     service-url:
       defaultZone: http://localhost:7777/eureka
 
-music:
-  folder: music/
+camera:
+  step: 45
