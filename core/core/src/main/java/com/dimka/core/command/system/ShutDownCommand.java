@@ -1,4 +1,4 @@
-package com.dimka.core.command.player;
+package com.dimka.core.command.system;
 
 import com.dimka.core.command.Command;
 import com.dimka.core.dto.Response;
@@ -6,11 +6,12 @@ import com.dimka.core.dto.ResponseStatus;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.client.WebClient;
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 @AllArgsConstructor
-@Component("play")
-public class PlayCommand implements Command {
+@Component("off")
+public class ShutDownCommand implements Command {
 
     private final WebClient.Builder builder;
 
@@ -18,9 +19,9 @@ public class PlayCommand implements Command {
     public Mono<Response> execute(Object params) {
         return builder.build()
                 .post()
-                .uri("http://player/player/mode/on")
+                .uri("http://system/system/state/shutdown")
                 .retrieve()
-                .bodyToMono(Boolean.class)
-                .map(status -> new Response(ResponseStatus.PLAYER_STATUS, status));
+                .bodyToMono(Void.class)
+                .map(nothing -> new Response(ResponseStatus.NO_CONTENT, ""));
     }
 }

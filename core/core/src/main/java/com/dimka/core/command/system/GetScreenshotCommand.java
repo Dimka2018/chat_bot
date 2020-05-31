@@ -1,4 +1,4 @@
-package com.dimka.core.command.player;
+package com.dimka.core.command.system;
 
 import com.dimka.core.command.Command;
 import com.dimka.core.dto.Response;
@@ -9,18 +9,18 @@ import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Mono;
 
 @AllArgsConstructor
-@Component("play")
-public class PlayCommand implements Command {
+@Component("screen")
+public class GetScreenshotCommand implements Command {
 
-    private final WebClient.Builder builder;
+    private WebClient.Builder builder;
 
     @Override
     public Mono<Response> execute(Object params) {
         return builder.build()
-                .post()
-                .uri("http://player/player/mode/on")
+                .get()
+                .uri("http://system/system/screenshot")
                 .retrieve()
-                .bodyToMono(Boolean.class)
-                .map(status -> new Response(ResponseStatus.PLAYER_STATUS, status));
+                .bodyToMono(byte[].class)
+                .map(bytes -> new Response(ResponseStatus.JPG, bytes));
     }
 }

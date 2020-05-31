@@ -1,6 +1,8 @@
 spring:
   application:
     name: core
+  codec:
+    max-in-memory-size: 15MB
 server:
   port: 8081
 

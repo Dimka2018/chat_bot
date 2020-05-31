@@ -1,27 +1,26 @@
 package com.dimka.telegram.bot;
 
+import lombok.AllArgsConstructor;
+import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.meta.TelegramBotsApi;
-import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
 import javax.annotation.PostConstruct;
 
 @Slf4j
+@AllArgsConstructor
 @Component
 public class BotStarter {
 
-    private Bot chatBot;
-    private TelegramBotsApi botsApi;
+    private final Bot chatBot;
+    private final TelegramBotsApi botsApi;
 
 
+    @SneakyThrows
     @PostConstruct
     public void startUp() {
-        try {
-            botsApi.registerBot(chatBot);
-            log.info("Telegram bot started");
-        } catch (TelegramApiException e) {
-            log.error(e);
-        }
+        botsApi.registerBot(chatBot);
+        log.info("Telegram bot started");
     }
 }

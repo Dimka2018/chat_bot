@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 
-@Component
+//@Component
 public class ArduinoCameraManipulator implements CameraManipulator {
 
     @Value("${camera.arduino.com}")
@@ -27,7 +27,7 @@ public class ArduinoCameraManipulator implements CameraManipulator {
 
     @PostConstruct
     public void connect() {
-        arduino.openConnection();
+        //arduino.openConnection();
     }
 
     @PreDestroy

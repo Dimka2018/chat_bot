@@ -1,4 +1,4 @@
-package com.dimka.core.command.utils;
+package com.dimka.core.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -7,8 +7,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-public class CommandMetadata {
+public class Response {
 
-    private String commandName;
-    private Object params;
+    private String code;
+    private Object content;
 }
