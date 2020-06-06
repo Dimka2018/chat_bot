@@ -11,8 +11,9 @@ eureka:
       defaultZone: http://localhost:7777/eureka
 
 camera:
-  name: USB PC Camera-168 1
+  name: USB PC Camera-168
   step: 45
+  fps: 20
   arduino:
     com: COM3
     rete: 115200

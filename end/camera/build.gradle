@@ -16,6 +16,9 @@ configurations {
 
 repositories {
 	mavenCentral()
+	maven {
+		url "https://www.dcm4che.org/maven2/"
+	}
 }
 
 ext {
@@ -26,6 +29,7 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
 	compile group: 'com.github.sarxos', name: 'webcam-capture', version: '0.3.12'
+	compile group: 'xuggle', name: 'xuggle-xuggler', version: '5.4'
 	implementation files("lib/arduino.jar")
 	compileOnly 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok'
