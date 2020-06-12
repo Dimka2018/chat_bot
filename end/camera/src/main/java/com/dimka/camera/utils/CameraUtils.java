@@ -4,6 +4,7 @@ import com.github.sarxos.webcam.Webcam;
 import com.github.sarxos.webcam.WebcamResolution;
 import com.xuggle.mediatool.IMediaWriter;
 import com.xuggle.mediatool.ToolFactory;
+import com.xuggle.xuggler.ICodec;
 import com.xuggle.xuggler.IPixelFormat;
 import com.xuggle.xuggler.IVideoPicture;
 import com.xuggle.xuggler.video.ConverterFactory;
@@ -34,6 +35,7 @@ public class CameraUtils {
 
         IMediaWriter writer = ToolFactory.makeWriter(new File("video.ts").getName());
         Dimension size = WebcamResolution.QVGA.getSize();
+        writer.addVideoStream(0, 0, ICodec.ID.CODEC_ID_H264, size.width, size.height);
 
         Webcam webcam = Webcam.getWebcams()
                 .stream()
@@ -59,6 +61,7 @@ public class CameraUtils {
         }
 
         writer.close();
+        webcam.close();
         return new File("video.ts");
     }
 }

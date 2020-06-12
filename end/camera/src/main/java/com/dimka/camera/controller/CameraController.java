@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.imageio.ImageIO;
 import javax.servlet.http.HttpServletResponse;
+import javax.websocket.server.PathParam;
 
 @Slf4j
 @RestController
@@ -32,7 +33,7 @@ public class CameraController {
     }
 
     @GetMapping("/camera/video")
-    public FileSystemResource getVideo(@PathVariable Long duration, HttpServletResponse response) {
+    public FileSystemResource getVideo(@PathParam("duration") Long duration, HttpServletResponse response) {
         return new FileSystemResource(CameraUtils.getVideo(fps, duration, cameraName));
     }
 
